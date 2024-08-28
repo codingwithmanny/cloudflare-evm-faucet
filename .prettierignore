@@ -1,0 +1,3 @@
+node_modules
+.dev.vars
+pnpm-lock.yaml

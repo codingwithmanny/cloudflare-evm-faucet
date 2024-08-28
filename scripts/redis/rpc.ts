@@ -8,7 +8,7 @@ import { privateKeyToAccount } from 'viem/accounts';
 // Config
 // =================================
 config({
-  path: "./.dev.vars"
+  path: './.dev.vars',
 });
 
 /**
@@ -16,10 +16,10 @@ config({
  */
 const VALIDATION = {
   name: /^[a-zA-Z][a-zA-Z0-9]*$/,
-	token: /^(\$[a-zA-Z]{4,5})/, // starts with '$' and is followed by 4-5 letters
-	number: /^(0(\.0*[1-9]\d{0,17})?|[1-9]\d*(\.\d{1,18})?)$/, // a number that is greater than 0
-	address: /^0x[a-fA-F0-9]{40}$/, // evm wallet private key
-  url: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+  token: /^(\$[a-zA-Z]{4,5})/, // starts with '$' and is followed by 4-5 letters
+  number: /^(0(\.0*[1-9]\d{0,17})?|[1-9]\d*(\.\d{1,18})?)$/, // a number that is greater than 0
+  address: /^0x[a-fA-F0-9]{40}$/, // evm wallet private key
+  url: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
 };
 
 /**
@@ -37,15 +37,19 @@ const main = async () => {
   const isTokenSymbolValid = VALIDATION.token.test(`${process.env.RPC_TOKEN_SYMBOL}`);
   const isTokenDecimalsValid = VALIDATION.number.test(`${process.env.RPC_TOKEN_DECIMALS}`);
   const isBlockExplorerUrlValid = VALIDATION.url.test(`${process.env.RPC_BLOCKEXPLORER_URL}`);
-  const isWalletPrivateKeyValid = VALIDATION.address.test(privateKeyToAccount(`${process.env.WALLET_PRIVATE_KEY}` as `0x${string}`).address);
+  const isWalletPrivateKeyValid = VALIDATION.address.test(
+    privateKeyToAccount(`${process.env.WALLET_PRIVATE_KEY}` as `0x${string}`).address,
+  );
 
-  if (!isChainIdValid
-    || !isChainNameValid
-    || !isRpcUrlValid
-    || !isTokenSymbolValid
-    || !isTokenDecimalsValid
-    || !isBlockExplorerUrlValid
-    || !isWalletPrivateKeyValid) {
+  if (
+    !isChainIdValid ||
+    !isChainNameValid ||
+    !isRpcUrlValid ||
+    !isTokenSymbolValid ||
+    !isTokenDecimalsValid ||
+    !isBlockExplorerUrlValid ||
+    !isWalletPrivateKeyValid
+  ) {
     throw new Error('Invalid environment variables.');
   }
 
@@ -95,7 +99,7 @@ const main = async () => {
 
   // 4 - Redis - Confirm Get RPC Values
   const rpc: { [key: string]: any } | null | undefined = await redis.get(REDIS_RPC_KEY);
-  console.log({ 
+  console.log({
     chainId: rpc?.chainId,
     chainName: rpc?.chainName,
     rpcUrl: rpc?.rpcUrl,
@@ -103,7 +107,7 @@ const main = async () => {
     decimals: rpc?.decimals,
     blockExplorerUrl: rpc?.blockExplorerUrl,
     walletAddress: privateKeyToAccount(rpc?.privateKey as `0x${string}`).address,
-   })
+  });
 };
 
 // Init
@@ -111,4 +115,3 @@ const main = async () => {
 main()
   .then(() => console.log('Done!'))
   .catch((error) => console.error(error));
-

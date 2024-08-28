@@ -1,34 +1,34 @@
 {
-	"name": "cloudflare-evm-faucet",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"redis:rpc": "./node_modules/.bin/tsx ./scripts/redis/rpc.ts --tsconfig ./tsconfig.json",
-		"redis:token": "./node_modules/.bin/tsx ./scripts/redis/token.ts --tsconfig ./tsconfig.json",
-		"deploy": "wrangler publish",
-		"dev": "wrangler dev --port 8787",
-		"start": "wrangler dev",
-		"test": "vitest",
-		"cf-typegen": "wrangler types",
-		"format": "prettier --write .",
-		"lt": "./node_modules/.bin/lt --port 8787"
-	},
-	"devDependencies": {
-		"@cloudflare/vitest-pool-workers": "^0.4.5",
-		"@cloudflare/workers-types": "^4.20240821.1",
-		"@types/node": "^22.5.1",
-		"localtunnel": "^2.0.2",
-		"prettier": "^3.3.3",
-		"ts-node": "^10.9.2",
-		"tsx": "^4.19.0",
-		"typescript": "^5.5.2",
-		"vitest": "1.5.0",
-		"wrangler": "^3.60.3"
-	},
-	"dependencies": {
-		"@upstash/qstash": "^2.6.5",
-		"@upstash/redis": "^1.34.0",
-		"dotenv": "^16.4.5",
-		"viem": "^2.20.1"
-	}
+  "name": "cloudflare-evm-faucet",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "redis:rpc": "./node_modules/.bin/tsx ./scripts/redis/rpc.ts --tsconfig ./tsconfig.json",
+    "redis:token": "./node_modules/.bin/tsx ./scripts/redis/token.ts --tsconfig ./tsconfig.json",
+    "deploy": "wrangler publish",
+    "dev": "wrangler dev --port 8787",
+    "start": "wrangler dev",
+    "test": "vitest",
+    "cf-typegen": "wrangler types",
+    "format": "prettier --write .",
+    "lt": "./node_modules/.bin/lt --port 8787"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.4.5",
+    "@cloudflare/workers-types": "^4.20240821.1",
+    "@types/node": "^22.5.1",
+    "localtunnel": "^2.0.2",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.2",
+    "vitest": "1.5.0",
+    "wrangler": "^3.60.3"
+  },
+  "dependencies": {
+    "@upstash/qstash": "^2.6.5",
+    "@upstash/redis": "^1.34.0",
+    "dotenv": "^16.4.5",
+    "viem": "^2.20.1"
+  }
 }

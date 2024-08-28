@@ -8,7 +8,7 @@ import { privateKeyToAccount } from 'viem/accounts';
 // Config
 // =================================
 config({
-  path: "./.dev.vars"
+  path: './.dev.vars',
 });
 
 /**
@@ -16,10 +16,10 @@ config({
  */
 const VALIDATION = {
   name: /^[a-zA-Z][a-zA-Z0-9]*$/,
-	token: /^(\$[a-zA-Z]{4,5})/, // starts with '$' and is followed by 4-5 letters
-	number: /^(0(\.0*[1-9]\d{0,17})?|[1-9]\d*(\.\d{1,18})?)$/, // a number that is greater than 0
-	address: /^0x[a-fA-F0-9]{40}$/, // evm wallet private key
-  url: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+  token: /^(\$[a-zA-Z]{4,5})/, // starts with '$' and is followed by 4-5 letters
+  number: /^(0(\.0*[1-9]\d{0,17})?|[1-9]\d*(\.\d{1,18})?)$/, // a number that is greater than 0
+  address: /^0x[a-fA-F0-9]{40}$/, // evm wallet private key
+  url: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
 };
 
 /**
@@ -85,10 +85,11 @@ const main = async () => {
   // 3 - Redis - Set Token Values
   const existingTokens: { [key: string]: any } = (await redis.get(REDIS_TOKENS_KEY)) || {};
   await redis.set('tokens', {
-    ...existingTokens, [tokenSymbol]: {
+    ...existingTokens,
+    [tokenSymbol]: {
       address,
-      decimals
-    }
+      decimals,
+    },
   });
 
   // 4 - Redis - Confirm Get Token Values

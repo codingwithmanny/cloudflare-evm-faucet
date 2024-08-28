@@ -68,7 +68,7 @@ pnpm redis:token honey 0x0E4aaF1351de4c0264C5c7056Ef3777b41BD8e03 18
 
 ### 3 - Running Locally
 
-Running locally will run the script on port http://localhost:8787. 
+Running locally will run the script on port http://localhost:8787.
 In order to for a success transaction, a proxy that exposes this port publicly will need to be run in order for Upstash Qstash to successfully trigger the worker.
 
 **Terminal 1**
@@ -137,14 +137,14 @@ pnpm run deploy;
 # [Expected Output]:
 # > cloudflare-evm-faucet@0.0.0 deploy /path/to/cloudflare-evm-faucet
 # > wrangler publish
-# 
+#
 #  ⛅️ wrangler 3.72.3
 # -------------------
-# 
+#
 # ▲ [WARNING] `wrangler publish` is deprecated and will be removed in the next major version.
-# 
+#
 #   Please use `wrangler deploy` instead, which accepts exactly the same arguments.
-# 
+#
 # Total Upload: 992.03 KiB / gzip: 219.05 KiB
 # Worker Startup Time: 21 ms
 # Uploaded cloudflare-evm-faucet (3.90 sec)
@@ -152,7 +152,7 @@ pnpm run deploy;
 #   https://cloudflare-evm-faucet.<YOUR_CLOUDFLARE_URL>.workers.dev
 # Current Deployment ID: <YOUR_CLOUDFLARE_DEPLOYMENT_ID>
 # Current Version ID: <YOUR_CLOUDFLARE_DEPLOYMENT_ID>
-# 
+#
 # Note: Deployment ID has been renamed to Version ID. Deployment ID is present to maintain compatibility with the previous behavior of this command. This output will change in a future version of Wrangler. To learn more visit: https://developers.cloudflare.com/workers/configuration/versions-and-deployments
 ```
 
@@ -170,9 +170,9 @@ pnpm dlx wrangler secret put UPSTASH_REDIS_REST_URL;
 # [Expected Prompt]:
 #  ⛅️ wrangler 3.72.3
 # -------------------
-# 
+#
 # ? Enter a secret value: › ***********************************
-# 🌀 Creating the secret for the Worker "cloudflare-evm-faucet" 
+# 🌀 Creating the secret for the Worker "cloudflare-evm-faucet"
 # ✨ Success! Uploaded secret UPSTASH_REDIS_REST_URL
 ```
 
